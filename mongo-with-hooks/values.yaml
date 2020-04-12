@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: istepanov/mongodump
+  pullPolicy: IfNotPresent
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+
+podSecurityContext: {}
+
+securityContext: {}
+
+mongodb:
+  persistence:
+    enabled: false
+
+  usePassword: false
+
+backup:
+  targetDb: mydatabase

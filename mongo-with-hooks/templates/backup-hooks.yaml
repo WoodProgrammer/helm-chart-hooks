@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Chart.Name }}-backup-hook
+  annotations:
+    "helm.sh/hook": "pre-delete"
+spec:
+  containers:
+  - name: {{ .Chart.Name }}-backup-hook-pod
+    image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+    imagePullPolicy: IfNotPresent
+    command: ['sh', '-c', 'mongodump --host  {{ .Release.Name }}-mongodb --forceTableScan -d {{ .Values.backup.targetDb}}--port 27017']
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 0
+
+
+##  serviceName: mongo-based-mongodb
