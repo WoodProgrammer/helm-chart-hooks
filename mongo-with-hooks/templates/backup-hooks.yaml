@@ -12,6 +12,3 @@ spec:
     command: ['sh', '-c', 'mongodump --host  {{ .Release.Name }}-mongodb --forceTableScan -d {{ .Values.backup.targetDb}}--port 27017']
   restartPolicy: Never
   terminationGracePeriodSeconds: 0
-
-
-##  serviceName: mongo-based-mongodb
